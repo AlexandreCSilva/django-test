@@ -1,0 +1,38 @@
+{% extends "trees/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen">
+  <div class="card w-full max-w-2xl shadow-xl bg-emerald-100">
+    <div class="card-body relative">
+      <h2 class="text-2xl font-bold text-green-600 mb-4">Login</h2>
+
+      <form method="post" class="space-y-4">
+        {% csrf_token %}
+        <input 
+          type="{{ form.username.field.widget.input_type }}"
+          name="{{ form.username.name }}"
+          id="{{ form.username.id_for_label }}"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+          placeholder="Nome de Usuário"
+          required
+        >
+
+        <input
+          type="{{ form.password.field.widget.input_type }}"
+          name="{{ form.password.name }}"
+          id="{{ form.password.id_for_label }}"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+          placeholder="Senha"
+          required
+        >
+
+        <div class="w-full flex justify-end pt-4">
+          <button type="submit" class="btn btn-success text-white">Entrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

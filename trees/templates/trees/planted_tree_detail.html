@@ -1,0 +1,35 @@
+{% extends "trees/base.html" %}
+
+{% block title %}Detalhes da Árvore{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen">
+  <div class="card w-full max-w-2xl shadow-xl bg-emerald-100">
+    <div class="card-body relative">
+      <h2 class="text-2xl font-bold text-green-600 mb-4">Detalhes da Árvore</h2>
+      
+      <div class="flex gap-2 mb-4">
+        <h2 class="text-xl font-bold">{{ tree.tree.name }}</h2>
+        <p class="text-xl text-gray-400">({{ tree.tree.scientific_name }})</p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-y-2 text-sm md:text-base">
+        <strong class="text-gray-600">Plantada por:</strong>
+        <span>{{ tree.user.username }}</span>
+
+        <strong class="text-gray-600">Conta:</strong>
+        <span>{{ tree.account.name }}</span>
+
+        <strong class="text-gray-600">Data do Plantio:</strong>
+        <span>{{ tree.planted_at|date:"d/m/Y H:i" }}</span>
+
+        <strong class="text-gray-600">Idade da árvore:</strong>
+        <span>{{ tree.age|default:"Não informado" }} anos</span>
+
+        <strong class="text-gray-600">Localização:</strong>
+        <span>({{ tree.latitude }}, {{ tree.longitude }})</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

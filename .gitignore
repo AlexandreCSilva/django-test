@@ -1,0 +1,61 @@
+# Arquivos de Bytecode e Cache do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Arquivos de cache e otimização do Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Arquivos de cache do pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Banco de dados local
+# Nunca envie seu banco de dados de desenvolvimento para o repositório
+db.sqlite3
+db.sqlite3-journal
+
+# Ambientes virtuais
+# A pasta do seu ambiente virtual (ex: .venv, venv, env) não deve ser versionada
+.venv/
+venv/
+env/
+.env
+*.env
+
+# Arquivos de mídia enviados pelos usuários
+# A pasta de mídia geralmente contém arquivos que não fazem parte do código-fonte
+media/
+
+# Arquivos estáticos coletados
+# A pasta gerada pelo comando 'collectstatic' não deve ser versionada
+staticfiles/
+static_root/
+
+# Logs
+logs/
+*.log
+
+# Arquivos de configuração de IDEs e editores
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Arquivos de dependências do Notebook
+.ipynb_checkpoints
+
+# Pacotes do Python
+# Ignora pacotes que possam ter sido baixados localmente
+*.egg-info/
+dist/
+build/
+*.egg

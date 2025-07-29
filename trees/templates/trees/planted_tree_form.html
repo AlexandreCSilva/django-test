@@ -1,0 +1,87 @@
+{% extends "trees/base.html" %}
+
+{% block title %}Nova Árvore{% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen">
+  <div class="card w-full max-w-2xl shadow-xl bg-emerald-100">
+    <div class="card-body relative">
+      <h2 class="text-2xl font-bold text-green-600 mb-4">Nova Árvore</h2>
+
+      <form method="post" class="space-y-4">
+        {% csrf_token %}
+
+        <label for="{{ form.tree.id_for_label }}" class="block text-sm font-medium text-gray-700">Árvore</label>
+        <select 
+          name="{{ form.tree.name }}"
+          id="{{ form.tree.id_for_label }}"
+          class="select select-bordered w-full"
+        >
+          {% for option in form.tree.field.queryset %}
+            <option value="{{ option.pk }}"
+              {% if form.tree.value|stringformat:"s" == option.pk|stringformat:"s" %}selected{% endif %}>
+              {{ option }}
+            </option>
+          {% endfor %}
+        </select>
+
+        <label for="{{ form.account.id_for_label }}" class="block text-sm font-medium text-gray-700">Conta</label>
+        <select 
+          name="{{ form.account.name }}"
+          id="{{ form.account.id_for_label }}"
+          class="select select-bordered w-full"
+        >
+          {% for option in form.account.field.queryset %}
+            <option value="{{ option.pk }}"
+              {% if form.account.value|stringformat:"s" == option.pk|stringformat:"s" %}selected{% endif %}>
+              {{ option }}
+            </option>
+          {% endfor %}
+        </select>
+
+        <label for="{{ form.account.id_for_label }}" class="block text-sm font-medium text-gray-700">Anos</label>
+        <input
+          type="number"
+          name="{{ form.age.name }}"
+          id="{{ form.age.id_for_label }}"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+          placeholder="Anos"
+          required
+        >
+
+        <label for="{{ form.account.id_for_label }}" class="block text-sm font-medium text-gray-700">Latitude</label>
+        <input
+          type="number"
+          step="any"
+          name="{{ form.latitude.name }}"
+          id="{{ form.latitude.id_for_label }}"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+          placeholder="Latitude"
+          required
+        >
+
+        <label for="{{ form.account.id_for_label }}" class="block text-sm font-medium text-gray-700">Longitude</label>
+        <input
+          type="number"
+          step="any"
+          name="{{ form.longitude.name }}"
+          id="{{ form.longitude.id_for_label }}"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+          placeholder="Longitude"
+          required
+        >
+
+        {% if form.non_field_errors %}
+          <div class="text-red-500 text-sm">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+
+        <div class="w-full flex justify-end pt-4">
+          <button type="submit" class="btn btn-success text-white">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
